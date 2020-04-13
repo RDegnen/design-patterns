@@ -14,4 +14,8 @@ implements Command {
     this.stereo.setCd()
     this.stereo.setVolume(11)
   }
+
+  public undo(): void {
+    this.stereo.off()
+  }
 }

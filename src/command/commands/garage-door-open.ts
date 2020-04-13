@@ -11,4 +11,8 @@ export default class GarageDoorOpenCommand implements Command {
   public execute(): void {
     this.garageDoor.up()
   }
+
+  public undo(): void {
+    this.garageDoor.down()
+  }
 }

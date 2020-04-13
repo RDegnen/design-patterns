@@ -4,13 +4,17 @@ import NoCommand from "./commands/no-command";
 export default class RemoteControl {
   onCommands: Array<Command> = []
   offCommands: Array<Command> = []
+  undoCommand: Command
   slotsLength: number = 7
 
   constructor() {
+    const noCommand = new NoCommand()
     for (let i = 0; i < this.slotsLength; i++) {
-      this.onCommands[i] = new NoCommand()
-      this.offCommands[i] = new NoCommand()
+      this.onCommands[i] = noCommand
+      this.offCommands[i] = noCommand
     }
+
+    this.undoCommand = noCommand
   }
 
   public setCommand(
@@ -24,10 +28,16 @@ export default class RemoteControl {
 
   public onButtonWasPushed(slot: number): void {
     this.onCommands[slot].execute()
+    this.undoCommand = this.onCommands[slot]
   }
 
   public offButtonWasPushed(slot: number): void {
     this.offCommands[slot].execute()
+    this.undoCommand = this.offCommands[slot]
+  }
+
+  public undoButtonWasPushed(): void {
+    this.undoCommand.undo()
   }
 
   public toString(): string {

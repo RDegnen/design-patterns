@@ -12,4 +12,8 @@ implements Command {
   public execute(): void {
     this.stereo.off()
   }
+
+  public undo(): void {
+    this.stereo.on()
+  }
 }
