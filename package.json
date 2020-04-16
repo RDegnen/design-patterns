@@ -1,0 +1,22 @@
+{
+  "name": "head-first-design-patterns",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RDegnen/design-patterns.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RDegnen/design-patterns/issues"
+  },
+  "homepage": "https://github.com/RDegnen/design-patterns#readme",
+  "dependencies": {
+    "@types/node": "^13.11.1"
+  }
+}
