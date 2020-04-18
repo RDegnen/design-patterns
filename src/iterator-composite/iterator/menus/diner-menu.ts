@@ -1,8 +1,10 @@
 import MenuItem from "./menu-item"
-import MyIterator from "../iterators/iterator"
+import MyIterator from "../iterators/my-iterator"
 import DinerMenuIterator from "../iterators/diner-menu-iterator"
+import NativeDinerIterator from "../iterators/native-diner-iterator"
+import Menu from "./menu"
 
-export default class DinerMenu {
+export default class DinerMenu implements Menu<MenuItem | undefined> {
   menuItems: Map<number, MenuItem>
 
   constructor() {
@@ -60,8 +62,18 @@ export default class DinerMenu {
   ): void {
     this.menuItems.set(key, new MenuItem(name, description, vegetarian, price))
   }
+  
+  /**
+   * Custom iterator
+   */
+  // public createIterator(): MyIterator<MenuItem | undefined> {
+  //   return new DinerMenuIterator(this.menuItems)
+  // }
 
-  public createIterator(): MyIterator<MenuItem | undefined> {
-    return new DinerMenuIterator(this.menuItems)
+  /**
+   * Typescript's Iterator
+   */
+  public createIterator(): Iterator<MenuItem | undefined> {
+    return new NativeDinerIterator(this.menuItems)
   }
 }

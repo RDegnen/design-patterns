@@ -1,7 +1,6 @@
-import MyIterator from "./my-iterator";
 import MenuItem from "../menus/menu-item";
 
-export default class DinerMenuIterator implements MyIterator<MenuItem | undefined> {
+export default class NativeDinerIterator implements Iterator<MenuItem | undefined> {
   items: Map<number, MenuItem>
   position: number = 0
 
@@ -9,13 +8,14 @@ export default class DinerMenuIterator implements MyIterator<MenuItem | undefine
     this.items = items
   }
 
-  public next(): MenuItem | undefined {
+  public next(): IteratorResult<MenuItem | undefined> {
     const menuItem: MenuItem | undefined = this.items.get(this.position)
+    const result = { value: menuItem, done: !this.hasNext() }
     this.position += 1
-    return menuItem
+    return result
   }
 
-  public hasNext(): boolean {
+  private hasNext(): boolean {
     if (this.position >= this.items.size - 1) {
       return false
     }

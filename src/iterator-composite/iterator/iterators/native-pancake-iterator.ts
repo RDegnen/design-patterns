@@ -1,7 +1,6 @@
-import MyIterator from "./my-iterator";
 import MenuItem from "../menus/menu-item";
 
-export default class PancakeHouseIterator implements MyIterator<MenuItem> {
+export default class NativePancakeIterator implements Iterator<MenuItem> {
   items: MenuItem[]
   position: number = 0
 
@@ -9,13 +8,14 @@ export default class PancakeHouseIterator implements MyIterator<MenuItem> {
     this.items = items
   }
 
-  public next(): MenuItem {
+  public next(): IteratorResult<MenuItem> {
     const menuItem: MenuItem = this.items[this.position]
+    const result = { value: menuItem, done: !this.hasNext() }
     this.position += 1
-    return menuItem
+    return result
   }
 
-  public hasNext(): boolean {
+  private hasNext(): boolean {
     if (this.position >= this.items.length - 1) {
       return false
     }

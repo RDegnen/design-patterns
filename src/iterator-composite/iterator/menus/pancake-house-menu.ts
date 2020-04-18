@@ -1,8 +1,10 @@
 import MenuItem from "./menu-item";
-import MyIterator from "../iterators/iterator";
+import MyIterator from "../iterators/my-iterator";
 import PancakeHouseIterator from "../iterators/pancake-house-iterator";
+import Menu from './menu'
+import NativePancakeIterator from "../iterators/native-pancake-iterator";
 
-export default class PancakeHouseMenu {
+export default class PancakeHouseMenu implements Menu<MenuItem> {
   menuItems: MenuItem[]
 
   constructor() {
@@ -46,7 +48,17 @@ export default class PancakeHouseMenu {
     this.menuItems.push(new MenuItem(name, description, vegetarian, price))
   }
 
-  public createIterator(): MyIterator<MenuItem> {
-    return new PancakeHouseIterator(this.menuItems)
+  /**
+   * custom iterator
+   */
+  // public createIterator(): MyIterator<MenuItem> {
+  //   return new PancakeHouseIterator(this.menuItems)
+  // }
+
+  /**
+   * TypeScript's Iterator
+   */
+  public createIterator(): Iterator<MenuItem> {
+    return new NativePancakeIterator(this.menuItems)
   }
 }
