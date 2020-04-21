@@ -29,6 +29,7 @@ function main () {
 
   const waitress: Waitress = new Waitress(allMenus)
   waitress.printMenus()
+  waitress.printVegetarianMenu()
 }
 
 main()

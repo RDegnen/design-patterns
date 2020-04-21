@@ -30,4 +30,6 @@ export default abstract class MenuComponent {
   public print(): void {
     throw new Error('Unsupported Operation')
   }
+
+  abstract createIterator(): Iterator<MenuComponent>
 }

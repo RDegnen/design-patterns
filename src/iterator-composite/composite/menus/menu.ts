@@ -1,7 +1,10 @@
 import MenuComponent from "./menu-component";
 import MenuComponentIterator from "../iterators/menu-component-iterator";
+import { menuComponentIterator } from "../types";
+import CompositeIterator from "../iterators/composite-iterator";
 
 export default class Menu extends MenuComponent {
+  iterator!: menuComponentIterator
   menuComponents: MenuComponent[] = []
   name: string
   description: string
@@ -43,5 +46,9 @@ export default class Menu extends MenuComponent {
       done = isDone
       value.print()
     }
+  }
+
+  public createIterator(): menuComponentIterator {
+    return new CompositeIterator(new MenuComponentIterator(this.menuComponents))
   }
 }

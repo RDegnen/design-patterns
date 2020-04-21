@@ -1,4 +1,6 @@
 import MenuComponent from "./menu-component";
+import { menuComponentIterator } from "../types";
+import NullIterator from "../iterators/null-iterator";
 
 export default class MenuItem extends MenuComponent {
   name: string
@@ -38,6 +40,9 @@ export default class MenuItem extends MenuComponent {
   public print(): void {
     const veggieValue = this.isVegetarian ? '(v)': ''
     console.log(`${this.getName()}${veggieValue}, ${this.getPrice()}  -- ${this.getDescription()}`)
+  }
 
+  public createIterator(): menuComponentIterator {
+    return new NullIterator()
   }
 }
