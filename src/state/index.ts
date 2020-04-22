@@ -5,7 +5,7 @@ import GumballMachine from "./gumball-machine"
  * its internal state changes. The object will appear to change its class
  */
 function main() {
-  const gumballMachine: GumballMachine = new GumballMachine(5)
+  const gumballMachine: GumballMachine = new GumballMachine('Peepees', 5)
 
   console.log(gumballMachine)
 

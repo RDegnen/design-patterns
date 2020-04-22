@@ -11,17 +11,19 @@ export default class GumballMachine {
   hasQuarterState: State
   soldState: State
   winnerState: State
+  location: string
 
   state: State
   count: number = 0
 
-  constructor(numberOfGumballs: number) {
+  constructor(location: string, numberOfGumballs: number) {
     this.soldOutState = new SoldOutState(this)
     this.noQuarterState = new NoQuarterState(this)
     this.hasQuarterState = new HasQuarterState(this)
     this.soldState = new SoldState(this)
     this.winnerState = new WinnerState(this)
 
+    this.location = location
     this.count = numberOfGumballs
 
     if (numberOfGumballs > 0) {
@@ -57,6 +59,10 @@ export default class GumballMachine {
 
   public getState(): State {
     return this.state;
+  }
+
+  public getLocation(): string {
+    return this.location
   }
 
   public getCount(): number {
