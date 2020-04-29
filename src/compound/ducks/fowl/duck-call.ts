@@ -10,6 +10,7 @@ export default class DuckCall implements Quackable {
 
   public quack(): void {
     console.log('Kwak')
+    this.notifyObservers()
   }
 
   public registerObserver(observer: Observer): void {

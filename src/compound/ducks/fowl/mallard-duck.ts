@@ -10,6 +10,7 @@ export default class MallardDuck implements Quackable {
 
   public quack(): void {
     console.log('Quack')
+    this.notifyObservers()
   }
 
   public registerObserver(observer: Observer): void {

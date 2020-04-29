@@ -17,9 +17,5 @@ export default class Flock implements Quackable {
     })
   }
 
-  public notifyObservers(): void {
-    this.quackers.forEach(quacker => {
-      quacker.notifyObservers()
-    })
-  }
+  public notifyObservers(): void {}
 }
