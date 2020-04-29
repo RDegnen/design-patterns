@@ -7,6 +7,7 @@ import QuackCounter from "./decorators/quack-counter";
 import AbstractDuckFactory from "./factories/abstract-duck-factory";
 import CountingDuckFactory from "./factories/counting-duck-factory";
 import Flock from "./fowl/flock";
+import Quackologist from "./observers/quackologist";
 
 function main() {
   const duckFactory: AbstractDuckFactory = new CountingDuckFactory()
@@ -18,13 +19,16 @@ function main() {
   flockOfDucks.add(mallardDuck)
   flockOfDucks.add(rubberDuck)
 
-  console.log('Duck Simulator')
+  console.log('Duck Simulator----------')
 
   simulate(mallardDuck)
   simulate(rubberDuck)
   simulate(gooseDuck)
 
-  console.log('Flock Simulator')
+  console.log('Flock Simulator----------')
+
+  const quackologist: Quackologist = new Quackologist()
+  flockOfDucks.registerObserver(quackologist)
   
   simulate(flockOfDucks)
 

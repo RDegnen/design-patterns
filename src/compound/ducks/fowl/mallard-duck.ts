@@ -1,7 +1,22 @@
-import { Quackable } from "../interfaces";
+import { Quackable, Observer } from "../interfaces";
+import Observable from "./observable";
 
 export default class MallardDuck implements Quackable {
+  observable: Observable
+
+  constructor() {
+    this.observable = new Observable(this)
+  }
+
   public quack(): void {
     console.log('Quack')
+  }
+
+  public registerObserver(observer: Observer): void {
+    this.observable.registerObserver(observer)
+  }
+
+  public notifyObservers(): void {
+    this.observable.notifyObservers()
   }
 }
